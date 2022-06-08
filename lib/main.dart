@@ -24,35 +24,81 @@ class MyApp extends StatelessWidget {
   }
 }
 
+void decrement() {
+  // ignore: avoid_print
+  print('Decrementou');
+}
+
+void increment() {
+  print('Increment');
+}
+
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    const color = Colors.black;
 
-    return  Scaffold(
-
-      backgroundColor: Colors.black,
+    return Scaffold(
+      backgroundColor: color,
       body: Column(
-
         //alinhamento do eixo principal
         mainAxisAlignment: MainAxisAlignment.center,
-       
-       //elementos filhos
-        children: const [
-            
-            Text('Pode entrar', style:TextStyle(
-                fontSize: 30,
-                color: Colors.white,
-                fontWeight:  FontWeight.w700,
-            )  , ),
-            
-            
-            Text('0', style: TextStyle(
+
+        //elementos filhos
+        children: [
+          const Text(
+            'Pode entrar',
+            style: TextStyle(
+              fontSize: 30,
+              color: Colors.white,
+              fontWeight: FontWeight.w700,
+            ),
+          ),
+          const Text(
+            '0',
+            style: TextStyle(
               color: Colors.white,
               fontSize: 100,
-            ),),
-            
+            ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TextButton(
+                onPressed:decrement,
+                
+                   style: TextButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  fixedSize: const Size(100, 100),
+                  primary: Colors.black,
+                 shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                  
+                ),
+                child: const Text('Saiu', style: TextStyle( color: Colors.black, fontSize: 20,)
+              ),),
+              
+              const SizedBox(width: 32),
+
+               TextButton(
+                onPressed:increment,
+                
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  fixedSize: const Size(100, 100),
+                  primary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                ),
+
+                child: const Text('Entrou', style: TextStyle( color: Colors.black, fontSize: 20,)
+              ),),
+            ],
+          )
         ],
       ),
     );
