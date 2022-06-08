@@ -14,17 +14,47 @@ void main(List<String> args) {
 // para criar um widget aqui no vs code basta digital stless/stful
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}): super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
-@override
+  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Container(
-        color: Colors.black,
-        alignment: Alignment.center,
-        child: const Text('O ola mundo'),
-      ),
+    return const MaterialApp(
+      home: HomePage(),
     );
   }
 }
 
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+
+    return  Scaffold(
+
+      backgroundColor: Colors.black,
+      body: Column(
+
+        //alinhamento do eixo principal
+        mainAxisAlignment: MainAxisAlignment.center,
+       
+       //elementos filhos
+        children: const [
+            
+            Text('Pode entrar', style:TextStyle(
+                fontSize: 30,
+                color: Colors.white,
+                fontWeight:  FontWeight.w700,
+            )  , ),
+            
+            
+            Text('0', style: TextStyle(
+              color: Colors.white,
+              fontSize: 100,
+            ),),
+            
+        ],
+      ),
+    );
+  }
+}
