@@ -38,7 +38,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    const color = Colors.black;
+   
+    const color = Color.fromARGB(255, 255, 7, 7);
 
     return Scaffold(
       backgroundColor: color,
@@ -56,29 +57,37 @@ class HomePage extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-          const Text(
+         
+         const SizedBox(height:30),
+
+            const Text(
             '0',
             style: TextStyle(
               color: Colors.white,
               fontSize: 100,
             ),
           ),
+    
+
+         const SizedBox(height:30),
+
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              
               TextButton(
                 onPressed:decrement,
                 
-                   style: TextButton.styleFrom(
+                  style: TextButton.styleFrom(
                   backgroundColor: Colors.white,
                   fixedSize: const Size(100, 100),
                   primary: Colors.black,
-                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(24),
+                  shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(24),
                   ),
                   
                 ),
-                child: const Text('Saiu', style: TextStyle( color: Colors.black, fontSize: 20,)
+                child: const Text('Saiu', style: TextStyle( color: Colors.black, fontSize: 16,)
               ),),
               
               const SizedBox(width: 32),
@@ -95,7 +104,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
 
-                child: const Text('Entrou', style: TextStyle( color: Colors.black, fontSize: 20,)
+                child: const Text('Entrou', style: TextStyle( color: Colors.black, fontSize: 16,)
               ),),
             ],
           )
