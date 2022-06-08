@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       home: Container(
         color: Colors.black,
         alignment: Alignment.center,
-        child: const Text('Hafgf rsddd'),
+        child: const Text('O ola mundo'),
       ),
     );
   }
