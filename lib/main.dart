@@ -51,6 +51,9 @@ class _HomePagesState extends State<HomePages> {
     print(contador);
   }
 
+  bool get lotado => contador == 20;
+  bool get naolotado => contador == 0;
+
   @override
   Widget build(BuildContext context) {
     //const color = Color.fromARGB(255, 255, 7, 7);
@@ -74,9 +77,9 @@ class _HomePagesState extends State<HomePages> {
 
 //  Enquanto que o children representa uma lista de filhos
         children: [
-          const Text(
-            'Pode entrar',
-            style: TextStyle(
+          Text(
+            lotado ? 'Lotado!' : 'Pode entrar',
+            style: const TextStyle(
               fontSize: 30,
               color: Colors.white,
               fontWeight: FontWeight.w700,
@@ -89,8 +92,8 @@ class _HomePagesState extends State<HomePages> {
             padding: const EdgeInsets.all(40),
             child: Text(
               contador.toString(),
-              style: const TextStyle(
-                color: Colors.white,
+              style: TextStyle(
+                color: lotado ? Colors.red : Colors.white,
                 fontSize: 100,
               ),
             ),
@@ -102,9 +105,10 @@ class _HomePagesState extends State<HomePages> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
-                onPressed: decrement,
+                onPressed: naolotado ? null : decrement,
                 style: TextButton.styleFrom(
-                  backgroundColor: Colors.white,
+                  backgroundColor:
+                      naolotado ? Colors.white.withOpacity(0.2) : Colors.white,
                   fixedSize: const Size(100, 100),
                   primary: Colors.black,
                   shape: RoundedRectangleBorder(
@@ -119,9 +123,10 @@ class _HomePagesState extends State<HomePages> {
               ),
               const SizedBox(width: 32),
               TextButton(
-                onPressed: increment,
+                onPressed: lotado ? null : increment,
                 style: TextButton.styleFrom(
-                  backgroundColor: Colors.white,
+                  backgroundColor:
+                      lotado ? Colors.white.withOpacity(0.2) : Colors.white,
                   fixedSize: const Size(100, 100),
                   primary: Colors.black,
                   shape: RoundedRectangleBorder(
