@@ -19,35 +19,60 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
-      home: HomePage(),
+      debugShowCheckedModeBanner: false,
+      home: HomePages(),
     );
   }
 }
 
-void decrement() {
-  // ignore: avoid_print
-  print('Decrementou');
+class HomePages extends StatefulWidget {
+  const HomePages({Key? key}) : super(key: key);
+
+  @override
+  State<HomePages> createState() => _HomePagesState();
 }
 
-void increment() {
-  print('Increment');
-}
+class _HomePagesState extends State<HomePages> {
+  int contador = 0;
 
-class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
+  void decrement() {
+    setState(() {
+      contador--;
+    });
+    print(contador);
+  }
+
+  // o comando setState() [e] responsavel por atribuir um estado
+
+  void increment() {
+    setState(() {
+      contador++;
+    });
+    print(contador);
+  }
 
   @override
   Widget build(BuildContext context) {
-   
-    const color = Color.fromARGB(255, 255, 7, 7);
+    //const color = Color.fromARGB(255, 255, 7, 7);
+
+// o [sacffold] e como se fosse o esqueleto da nossa aplicacao
 
     return Scaffold(
-      backgroundColor: color,
-      body: Column(
+        //   backgroundColor: color,
+        body: Container(
+      decoration: const BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage('assets/img/background.jpg'),
+          fit: BoxFit.cover,
+        ),
+      ),
+
+      // o child nos permite atribuir um unico filho
+      child: Column(
         //alinhamento do eixo principal
         mainAxisAlignment: MainAxisAlignment.center,
 
-        //elementos filhos
+//  Enquanto que o children representa uma lista de filhos
         children: [
           const Text(
             'Pode entrar',
@@ -57,44 +82,27 @@ class HomePage extends StatelessWidget {
               fontWeight: FontWeight.w700,
             ),
           ),
-         
-         const SizedBox(height:30),
 
-            const Text(
-            '0',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 100,
+          // const SizedBox(height: 30),
+
+          Padding(
+            padding: const EdgeInsets.all(40),
+            child: Text(
+              contador.toString(),
+              style: const TextStyle(
+                color: Colors.white,
+                fontSize: 100,
+              ),
             ),
           ),
-    
 
-         const SizedBox(height:30),
+          //   const SizedBox(height: 30),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              
               TextButton(
-                onPressed:decrement,
-                
-                  style: TextButton.styleFrom(
-                  backgroundColor: Colors.white,
-                  fixedSize: const Size(100, 100),
-                  primary: Colors.black,
-                  shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(24),
-                  ),
-                  
-                ),
-                child: const Text('Saiu', style: TextStyle( color: Colors.black, fontSize: 16,)
-              ),),
-              
-              const SizedBox(width: 32),
-
-               TextButton(
-                onPressed:increment,
-                
+                onPressed: decrement,
                 style: TextButton.styleFrom(
                   backgroundColor: Colors.white,
                   fixedSize: const Size(100, 100),
@@ -103,13 +111,47 @@ class HomePage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(24),
                   ),
                 ),
-
-                child: const Text('Entrou', style: TextStyle( color: Colors.black, fontSize: 16,)
-              ),),
+                child: const Text('Saiu',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    )),
+              ),
+              const SizedBox(width: 32),
+              TextButton(
+                onPressed: increment,
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  fixedSize: const Size(100, 100),
+                  primary: Colors.black,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(24),
+                  ),
+                ),
+                child: const Text('Entrou',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                    )),
+              ),
             ],
           )
         ],
       ),
-    );
+    ));
   }
 }
+
+
+
+/*
+class HomePage extends StatelessWidget {
+  const HomePage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+   
+   
+  }
+}
+*/
